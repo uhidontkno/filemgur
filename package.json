@@ -3,7 +3,7 @@
   "module": "index.ts",
   "type": "module",
   "scripts": {
-    "dev": "wrangler dev index.ts",
+    "dev": "wrangler dev --port 3000 index.ts ",
     "deploy": "wrangler deploy --minify index.ts",
     "build": "bunx tailwindcss -i static/tw.css -o static/app.css -m -w"
   },
