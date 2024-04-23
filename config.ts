@@ -5,7 +5,8 @@ export default {
         "file_extension_regex": / *.* /,
         "auth": {
             "used": false,
-            "policy_regex": /^(?=.*[0-9]).{8,}$/
+            "policy_regex": /^(?=.*[0-9]).{8,}$/,
+            "kv_id": process.env.KV_ID
         }
     }
 }

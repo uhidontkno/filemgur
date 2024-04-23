@@ -2,10 +2,20 @@
   "name": "filemgur",
   "module": "index.ts",
   "type": "module",
+  "scripts": {
+    "dev": "wrangler dev index.ts",
+    "deploy": "wrangler deploy --minify index.ts",
+    "build": "bunx tailwindcss -i static/tw.css -o static/app.css -m -w"
+  },
   "devDependencies": {
     "@types/bun": "latest"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "hono": "^4.2.6",
+    "tailwindcss": "^3.4.3",
+    "wrangler": "^3.51.2"
   }
 }

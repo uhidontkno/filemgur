@@ -1,1 +1,4 @@
-console.log("Hello via Bun!");
+import { Hono } from 'hono';
+const server = new Hono();
+
+export default server;
