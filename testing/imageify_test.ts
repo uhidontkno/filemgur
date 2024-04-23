@@ -1,3 +1,3 @@
-import PNG from "../modules/imageify"
-let pngify = await PNG("input.txt");
+import imageify from "../modules/imageify"
+let pngify = await imageify.PNG("input.txt");
 await Bun.write("output.png",pngify)

@@ -25,4 +25,21 @@ async function PNG(fp: string): Promise<Buffer> {
     // Convert to PNG and return as buffer
     return await image.png().toBuffer();
 }
-export default PNG;
+async function readPNG(fp: string): Promise<Buffer> {
+    // Read the PNG image file
+    const dat = Bun.file(fp);
+    const datBuffer = await dat.arrayBuffer()
+    const metadata = await sharp(datBuffer).metadata();
+    const pixels = (metadata.width || 256) * (metadata.height || 256);
+    const imgBuf = Buffer.alloc(pixels * 3);
+    const { data } = await sharp(datBuffer).raw().toBuffer({ resolveWithObject: true });
+    for (let i = 0; i < pixels; i++) {
+        imgBuf[i * 3] = data[i * 4];     // Red
+        imgBuf[i * 3 + 1] = data[i * 4 + 1]; // Green
+        imgBuf[i * 3 + 2] = data[i * 4 + 2]; // Blue
+    }
+
+    // Return the image buffer
+    return imgBuf;
+}
+export default {PNG,readPNG};
