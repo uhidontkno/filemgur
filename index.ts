@@ -6,4 +6,16 @@ const server = new Hono();
 
 server.get('/*', serveStatic({ root: './', manifest }))
 
+server.get('/api/upload', (c) => {
+    c.text("TODO")
+})
+
+server.get('/api/fetch', (c) => {
+    c.text("TODO")
+})
+
+server.get('/api/download', (c) => {
+    c.text("TODO")
+})
+
 export default server;
